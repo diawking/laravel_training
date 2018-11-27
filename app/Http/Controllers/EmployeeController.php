@@ -13,6 +13,11 @@ class EmployeeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+      $this->middleware(['auth', 'verified']);
+    }
+
     public function index()
     {
         //
@@ -76,6 +81,31 @@ class EmployeeController extends Controller
     public function show($id)
     {
         //
+        $employees = employees::find($id);
+        if (empty($employees))
+          abort(404);
+        // foreach($employees as $emp) {
+        //   echo $emp->fname;
+        // }
+        return view('crud.show', compact('employees'))
+        ->with([
+          'title' => 'CRUD Training',
+          'subtitle' => 'Introduction CRUD'
+        ]);
+    }
+
+    public function show2($id)
+    {
+        //
+        $employees = employees::find($id);
+        // foreach($employees as $emp) {
+        //   echo $emp->fname;
+        // }
+        return view('crud.show', compact('employees'))
+        ->with([
+          'title' => 'CRUD Training',
+          'subtitle' => 'Introduction CRUD'
+        ]);
     }
 
     /**

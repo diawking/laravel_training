@@ -13,6 +13,7 @@
             <th scope="col">First</th>
             <th scope="col">Last</th>
             <th scope="col">Email</th>
+            <th scope="col">Show</th>
             <th scope="col">Edit</th>
             <th scope="col">Delete</th>
           </tr>
@@ -23,7 +24,8 @@
             <td>{{ $emp->id }}</td>
             <td>{{ $emp->fname }}</td>
             <td>{{ $emp->lname }}</td>
-            <td>{{ $emp->email }}</td>
+            <td><a href="/crud/show2/{{$emp->id}}">{{ $emp->email }}</a></td>
+            <td><a href="/crud/{{$emp->id}}" class="btn btn-primary">Show</a></td>
             <td><a href="{{action('EmployeeController@edit', $emp->id)}}" class="btn btn-warning">Edit</a></td>
             <td>
               <form action="{{action('EmployeeController@destroy', $emp->id)}}" method="post">
