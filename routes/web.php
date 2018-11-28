@@ -47,3 +47,6 @@ Route::get('mail','MailController@basic_email');
 Route::get('profile', function () {
     // Only verified users may enter...
 })->middleware('verified');
+
+
+Route::resource('users','UserController');
